@@ -39,7 +39,6 @@ gulp.task('bs', () => {
 		server: {
 			baseDir: './'
 		},
-		middleware: [historyApiFallback()]
 	});
 });
 

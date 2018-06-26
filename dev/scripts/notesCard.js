@@ -18,7 +18,8 @@ export default class NoteCard extends React.Component {
         dbRef.update({
             title: this.noteTitle.value,
             text: this.noteText.value,
-            repurchase: this.repurchase.value
+            repurchase: this.repurchase.value,
+            price: this.price.value
         });
 
         this.setState({
@@ -31,7 +32,8 @@ export default class NoteCard extends React.Component {
             <span>
                 <h4>{this.props.note.title}</h4>
                 <p>{this.props.note.text}</p>
-                <p><strong>Repurchase?</strong> {this.props.note.repurchase}</p>
+                <h5>Repurchase?</h5><p>{this.props.note.repurchase}</p>
+                <h6>Cost:</h6><p>{this.props.note.price}</p>
             </span>
         )
         if(this.state.editing) {
@@ -46,14 +48,17 @@ export default class NoteCard extends React.Component {
                     <div>
                         <input type="text" defaultValue={this.props.note.repurchase} ref={ref => this.repurchase = ref}/>
                     </div>
+                    <div>
+                        <input type="text" defaultValue={this.props.note.price} ref={ref => this.price = ref}/>
+                    </div>
                     <input type="submit" value='Done editing!'/>
                 </form>
             )
         }
         return (
             <div className="noteCard">
-                <i className="fa fa-edit" onClick={() => this.setState({editing: true})}></i>
-                <i className="fa fa-times" onClick={() => this.props.removeNote(this.props.note.key)}></i>
+                <i className="fas fa-edit" onClick={() => this.setState({editing: true})}></i>
+                <i className="fas fa-times" onClick={() => this.props.removeNote(this.props.note.key)}></i>
                 {editingTemp}
             </div>
         )

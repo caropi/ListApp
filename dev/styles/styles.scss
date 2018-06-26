@@ -12,12 +12,26 @@ body {
 	background-attachment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
-	color: #182020;
+	color: #485055;
 	font-family: $bodyfont;
 }
 
-a, i {
+a, i.fa-times, i.fa-info-circle, i.fa-edit {
 	cursor: pointer;
+}
+
+.greeting {
+	position: absolute;
+	padding: 20px;
+	width: 400px;
+	background: rgba($color: white, $alpha: 0.7);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 20px;	
+	h2 {
+		text-align: center;
+	}
 }
 
 /*
@@ -30,6 +44,7 @@ a, i {
 	align-items: center;
     justify-content: space-between;
 	background: white;
+	opacity: 0.9;
 	position: fixed;
 	width: 100%;
 	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
@@ -37,44 +52,100 @@ a, i {
 	font-family: $headingfont;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	@media (max-width: 565px) {
+	&__title {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		img {
+			position: absolute;
+			z-index: 5;
+			width: 90px;
+		}
+		h1 {
+			margin-bottom: 0;
+			letter-spacing: 2.5px;
+			position: relative;
+			z-index: 6;
+			padding-left: 100px;
+			text-transform: uppercase;
+			&:after {
+				content: '';
+				position: absolute;
+				margin-left: 105px;
+				width: 200px;
+				height: 2px;
+				background:#B8C1C8;
+				left: -10px;
+				bottom: 0;
+				z-index: inherit;
+			}
+		}
+		h2 {
+			margin: 0;
+			z-index: 6;
+			font-size: 20px;
+			margin-bottom: 10px;
+			padding-left: 110px;
+		}
+	}
+	@media (max-width: 640px) {
 		& {
 			flex-direction: column;
 		}
+	}
+	i {
+		padding: 10px;
+		transition: all 0.5s ease;
+	}
+	i:hover, a:hover {
+		text-shadow: 0px 0px #485055, 1px 1px #F5D2C6, 2px 2px #F5D2C6;
 	}
 }
 
 .mainHeader a {
     margin: 0 10px;
-    color: #343e3e;
+    color: #485055;
     text-decoration: none;
-    font-weight: 600;
+	font-weight: 600;
+	transition: all 0.5s ease;
 }
 
 /*
 	Sidebar
 */
 
-.sidebar {
+
+.sidebar, .skincareSideBar {
 	width: 250px;
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: -250px;
-	background: #AC9092;
+	background: #B8C1C8;
 	transition: all 0.5s ease;
 	padding: 0 15px;
 	z-index: 20; 
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
-	i {
-		background: #7E6872;
+	text-align: center;
+	overflow: scroll;
+	i.fa-times{
+		background: #D5A891;
 		border-radius: 50px;
 		padding: 10px 12px;
+		transition: all 0.5s ease;
+		&:hover {
+			box-shadow: 0 0 0 3px #F1E2DD;
+		}
+	}
+	form {
+		background: lighten($color: #B8C1C8, $amount: 3);
+		border-radius: 20px;
+		margin-top: 20px;
 	}
 }
 
-.sidebar.show {
+.sidebar.show, .skincareSideBar.show {
 	left: 0;
 
 }
@@ -83,22 +154,35 @@ a, i {
 .sidebar textarea {
 	width: 100%;
 	margin-bottom: 25px;
-	background: linear-gradient( rgba($color: white, $alpha: 1.0), rgba($color: white, $alpha: 1.0));
+	background: linear-gradient( rgba($color: #F1E2DD, $alpha: 1.0), rgba($color: #F1E2DD, $alpha: 1.0));
 	border: none;
-	border-bottom: 2px solid #7E6872;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
+	resize: none;
+	margin: 0;
+	padding: 15px;
+	font-size: 14px;
 }
 
 .sidebar input[type=submit] {
 	border: 2px solid #517288;
-	color: #2f424e;
+	color: white;
+	width: 100%;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border: none;
+	background:#485055;
+	transition: all 0.5s ease;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	&:hover {
+		background: lighten($color: #485055, $amount: 15)
+	}
 }
 
 .fa-times{
 	position: absolute;
 	top: 5px;
 	right: 5px;
+	z-index: 10;
 }
 
 .fa-edit {
@@ -135,7 +219,7 @@ a, i {
 }
 
 .noteCard h4 {
-	margin-top: 0;
+	margin-top: 15px;
 	position: relative;
 }
 
@@ -187,19 +271,62 @@ a, i {
 .modal {
 	width: 400px;
 	background: white;
-	border: 10px solid rgba(255,255,255,0.5);
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
+	border-radius: 20px;
+	i {
+		background: #D5A891;
+		border-radius: 50px;
+		padding: 10px 12px;	
+		transition: all 0.3s ease;
+		&:hover {
+			box-shadow: 0 0 0 3px #F1E2DD;
+		}	
+	}
+	form {
+		margin-top: 30px;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		padding: 0;
+		text-align: center;
+		div {
+			display: flex;
+			flex-direction: column;
+		}
+		label {
+			text-transform: uppercase;
+			padding: 10px;
+		}
+		input {
+			padding: 20px;
+			background: #F1E2DD;
+			transition: all 0.3s ease;
+			border: none;
+			&:hover {
+				background: lighten($color:#F1E2DD, $amount: 3);
+			}
+		}
+		input[type=submit] {
+			border-bottom-left-radius: 20px;
+			border-bottom-right-radius: 20px;
+			background: lighten($color:#B8C1C8, $amount: 10);
+			border: none;
+			text-transform: uppercase;
+			padding: 25px;
+			transition: all 0.5s ease;
+			margin-top: 20px;
+			font-size: 22px;
+			letter-spacing: 1.5px;
+			&:hover {
+				background: lighten($color:#B8C1C8, $amount: 0);
+			}
+
+		}
+	}
 }
 
-.modal div {
-	margin: 15px;
-	display: flex;
-}
-.modal label {
-	margin-right: 10px;
-}
 
 .overlay {
 	top: 0;
