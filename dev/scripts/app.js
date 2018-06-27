@@ -11,6 +11,7 @@ const config = {
   messagingSenderId: "670058924123"
 };
 firebase.initializeApp(config);
+
 const skincareSteps = [
   {
     "description": "Considered a chemical exfoliant, this could consist of AHA(Alpha Hydroxy Acid) or BHA (Beta Hydroxy Acid). You don't have to do this every day if you have sensitive skin. Chemical exfoliants will get rid of a lot of dead skin cells without needing to resort to harsh scrubs.",
@@ -109,7 +110,9 @@ const skincareSteps = [
     "waitTime": "Depends on Consistency and how long it takes to dry"
   }
 ];
-
+skincareSteps.sort(function (a, b) {
+  return a.value - b.value;
+});
 class App extends React.Component{
   constructor() {
     super();
@@ -158,7 +161,8 @@ class App extends React.Component{
 
   showSkincareInfo(e) {
     e.preventDefault();
-    this.skincareSideBarInfo.classList.toggle('show');
+    this.overlay.classList.toggle('show');
+    this.skincareModal.classList.toggle('show');
   }
 
   addNote(e) {
@@ -317,10 +321,12 @@ class App extends React.Component{
             <input type="submit" value="Add New Note"/>
           </form>
         </aside>
-        <aside className="modal" ref={ref => this.skincareSideBarInfo = ref} >
-          <div className="close-btn" onClick={this.skincareSideBar}>
+        <aside className="modal skincareModal" ref={ref => this.skincareModal = ref} >
+          <div className="close-btn" onClick={this.showSkincareInfo}>
             <i className="fas fa-times"></i>
           </div>
+          <h3>Skincare Breakdown</h3>
+          <p>Below is an ordered breakdown of items you may have in your routine. For some, a full twelve steps is necessary, for others, a simple three step routine suffices. Your milage may vary. Just remember folks, your mileage may vary, and <a href="https://www.reddit.com/r/SkincareAddiction/">Reddit</a> is your friend.</p>
           <InfoSideBar skincareSteps={skincareSteps} />
         </aside>
         <div className="loginModal modal" ref={ref => this.loginModal = ref}>

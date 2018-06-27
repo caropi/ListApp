@@ -20,6 +20,10 @@ a, i.fa-times, i.fa-info-circle, i.fa-edit {
 	cursor: pointer;
 }
 
+img {
+	max-width: 90px;
+}
+
 .greeting {
 	position: absolute;
 	padding: 20px;
@@ -254,7 +258,8 @@ a, i.fa-times, i.fa-info-circle, i.fa-edit {
 */
 
 .modal,
-.overlay {
+.overlay,
+ {
 	visibility: hidden;
 	opacity: 0;
 	transition: all 0.3s ease;
@@ -327,9 +332,65 @@ a, i.fa-times, i.fa-info-circle, i.fa-edit {
 	}
 }
 
+.skincareModal {
+	width: 80%;
+	height: 90%;
+	overflow: scroll;
+	font-size: 13px;
+	padding: 20px;
+	a {
+		text-decoration: none;
+		border-bottom: 3px solid transparent;
+		transition: all 0.5s ease;
+		color: darken($color: #C69D89, $amount: 10);
+		&:hover {
+			border-bottom: 3px solid #B8C1C8;
+		}
+	}
+	ul {
+		padding: 0;
+		list-style-type: none;
+		counter-reset: section; 
+		li {
+			position: relative;
+			&:before {
+				position: absolute;
+				counter-increment: section;   
+				content: counters(section, ".") " ";
+				left: 0;
+				top: 0;
+				font-size: 70px;
+				line-height: 0.5;
+				font-weight: 700;
+				color: rgba($color: #B8C1C8, $alpha: 0.3);
+				z-index: -2;
+			}
+		}
+	}
+	img {
+		float: left;
+	}
+	.waitTime {
+		clear: both;
+		border-radius: 20px;
+		background:#F1E2DD;
+		padding: 10px;
+		i {
+			background: none;
+		}
+	}
+	.close-btn {
+		z-index: 12;
+		position: -webkit-sticky; /* Safari */
+		position: sticky;
+		top: 0;
+		left: 105%;
+	}
+}
 
 .overlay {
 	top: 0;
+	position: fixed;
 	left: 0;
 	height: 100%;
 	width: 100%;
