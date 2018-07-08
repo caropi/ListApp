@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import NoteCard from './notesCard.js';
 import InfoSideBar from './infosidebar.js';
 import skincareSteps from './SkincareSteps.js';
+import Timer from './timer.js';
 const config = {
   apiKey: "AIzaSyDBodQTjhGFdjOszO9WZ9kZCAphvQhm7Ts",
   authDomain: "skincare-notes.firebaseapp.com",
@@ -71,7 +72,9 @@ class App extends React.Component{
     const note = {
       title: this.noteTitle.value,
       text: this.noteText.value,
-      repurchase: this.repurchase.value
+      repurchase: this.repurchase.value,
+      price: this.price.value
+
     }  
     const userId = firebase.auth().currentUser.uid
     const dbRef = firebase.database().ref(`users/${userId}/notes`);
@@ -81,6 +84,7 @@ class App extends React.Component{
     this.noteTitle.value = ""; //clear out values
     this.noteText.value = ""; //clears out values
     this.repurchase.value = "";
+    this.price.value = "";
     this.showSidebar(e); //calls the toggle sidebar function after all of the other events in this function run
   }
 
@@ -227,6 +231,7 @@ class App extends React.Component{
           </p>
           </div>
         </aside>
+
         <aside className="modal skincareModal" ref={ref => this.skincareModal = ref} >
           <div className="close-btn" onClick={this.showSkincareInfo}>
             <i className="fas fa-times"></i>
@@ -252,6 +257,10 @@ class App extends React.Component{
                 <input type="submit" value="Login"/>
               </div>
           </form>
+        </div>
+
+        <div className="timerContainer">
+            <Timer />
         </div>
 
         <div className="createUserModal modal" ref={ref => this.createUserModal = ref} >

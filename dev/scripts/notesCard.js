@@ -32,8 +32,8 @@ export default class NoteCard extends React.Component {
             <span>
                 <h4>{this.props.note.title}</h4>
                 <p>{this.props.note.text}</p>
-                <h5>Repurchase?</h5><p>{this.props.note.repurchase}</p>
-                <h6>Cost:</h6><p>{this.props.note.price}</p>
+                <h5>Repurchase: {this.props.note.repurchase}</h5>
+                <h6>Cost: {this.props.note.price}</h6>
             </span>
         )
         if(this.state.editing) {

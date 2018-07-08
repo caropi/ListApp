@@ -28,6 +28,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "format-duration": "^1.1.0",
+    "moment": "^2.22.2",
     "node-sass": "^4.7.1"
   }
 }

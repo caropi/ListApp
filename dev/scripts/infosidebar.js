@@ -1,7 +1,5 @@
 import React from 'react';
 
-//2 returns
-
 const InfoSideBar = (props) => {
     return (
         <ul>

@@ -220,6 +220,9 @@ img {
 	&:hover {
 		opacity: 1;
 	}
+	form {
+		padding-top: 20px;
+	}
 }
 
 .noteCard h4 {
@@ -381,10 +384,9 @@ img {
 	}
 	.close-btn {
 		z-index: 12;
-		position: -webkit-sticky; /* Safari */
+		position: -webkit-sticky; 
 		position: sticky;
 		top: 0;
-		left: 105%;
 	}
 }
 
