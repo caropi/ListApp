@@ -76,8 +76,8 @@ class Timer extends React.Component {
     render() {
         return (
             <div className = "pomodoroContainer" >
-                <h3>Time Your Steps</h3>
-                <p>Need a bit of help keeping track of wait times or too lazy to get your phone or open a new tab and google '5 minute timer'? We've got you covered <i class="far fa-heart"></i>.</p>
+                <h3>Time Your Routine</h3>
+                <p>Need a bit of help keeping track of wait times or too lazy to get your phone or open a new tab and google '5 minute timer'? We've got you covered <i class="far fa-heart"></i>. Use this timer to help you know when to move to the next step in your routine. Click the <i className="fas fa-info-circle"></i> on the main page for more details on wait times.</p>
                 <TimerDisplay 
                     currentTime={this.state.currentTime} 
                     timerState={this.state.timerState}
