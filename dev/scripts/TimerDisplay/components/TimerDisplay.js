@@ -7,9 +7,12 @@ const leftPad = (val) => {
     return `${val}`;
 }
 
+
+
 const TimerDisplay = (props) => (
     <div>
-        <h4>
+        
+        <h4 className="timerDisplay">
             {`${leftPad(props.currentTime.get('minutes'))}:${leftPad(props.currentTime.get('seconds'))}`}
         </h4>
 

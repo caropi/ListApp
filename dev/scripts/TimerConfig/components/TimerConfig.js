@@ -20,7 +20,7 @@ class TimerConfig extends React.Component {
         return (
             <div className="timerForm">
                 <h4>Set Timer</h4>
-                <label htmlFor="minutes">Minutes</label>
+                <label htmlFor="minutes">Minutes: </label>
                 <input 
                     id="minutes" 
                     type="text" 

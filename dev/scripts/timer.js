@@ -77,6 +77,7 @@ class Timer extends React.Component {
         return (
             <div className = "pomodoroContainer" >
                 <h3>Time Your Steps</h3>
+                <p>Need a bit of help keeping track of wait times or too lazy to get your phone or open a new tab and google '5 minute timer'? We've got you covered <i class="far fa-heart"></i>.</p>
                 <TimerDisplay 
                     currentTime={this.state.currentTime} 
                     timerState={this.state.timerState}

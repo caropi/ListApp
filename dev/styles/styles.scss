@@ -147,6 +147,15 @@ img {
 		border-radius: 20px;
 		margin-top: 20px;
 	}
+	a {
+		text-decoration: none;
+		border-bottom: 3px solid transparent;
+		transition: all 0.5s ease;
+		color: darken($color: #C69D89, $amount: 10);
+		&:hover {
+			border-bottom: 3px solid darken($color: #B8C1C8, $amount: 20);
+		}
+	}
 }
 
 .sidebar.show, .skincareSideBar.show {
@@ -335,7 +344,8 @@ img {
 	}
 }
 
-.skincareModal {
+.skincareModal,
+.timerContainer {
 	width: 80%;
 	height: 90%;
 	overflow: scroll;
@@ -387,6 +397,54 @@ img {
 		position: -webkit-sticky; 
 		position: sticky;
 		top: 0;
+	}
+}
+
+.timerContainer {
+	width: 350px;
+	height: 450px;
+	.timerDisplay {
+		text-align: center;
+		font-size: 35px;
+		margin: 0 auto;
+		padding: 38px 0;
+		width: 130px;
+		height: 130px;
+		border-radius: 50%;
+		background: #B8C1C8;
+		border: 5px solid lighten($color: #B8C1C8, $amount: 10);
+	}
+	.row {
+		padding-top: 20px;
+		text-align: center;
+		button {
+			background: #D5A891;
+			border: none;
+			border-radius: 15px;
+			padding: 10px 12px;	
+			transition: all 0.3s ease;
+			text-transform: uppercase;
+			&:hover {
+				box-shadow: 0 0 0 5px #F1E2DD;
+			}
+		}
+	}
+	.timerForm {
+		text-align: center;
+		input {
+			width: 50px;
+		}
+	}
+}
+
+.pomodoroContainer {
+	i {
+		background: none;
+		padding: 3px;
+		border-radius: none;
+		&:hover {
+			box-shadow: none;
+		}
 	}
 }
 

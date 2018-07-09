@@ -29,6 +29,7 @@ class App extends React.Component{
     this.createUser = this.createUser.bind(this);
     this.showLogin = this.showLogin.bind(this);
     this.loginUser = this.loginUser.bind(this);
+    this.showTimer = this.showTimer.bind(this);
   }
 
   componentDidMount() {
@@ -169,6 +170,12 @@ class App extends React.Component{
     }
   }
 
+  showTimer(e) {
+    e.preventDefault();
+    this.overlay.classList.toggle('show');
+    this.timerContainer.classList.toggle('show');
+  }
+
 
   render() {
     return (
@@ -200,7 +207,7 @@ class App extends React.Component{
                 }
               })()
             }
-            {/* <i className="fas fa-stopwatch"></i> */}
+            <i className="fas fa-stopwatch" onClick={this.showTimer}></i>
             <i className="fas fa-info-circle" onClick={this.showSkincareInfo}></i> 
           </nav>
         </header>
@@ -259,8 +266,11 @@ class App extends React.Component{
           </form>
         </div>
 
-        <div className="timerContainer">
-            <Timer />
+        <div className="timerContainer modal" ref={ref => this.timerContainer = ref}>
+          <div className="close-btn" onClick={this.showTimer}>            
+            <i className="fas fa-times"></i>
+          </div>
+          <Timer />
         </div>
 
         <div className="createUserModal modal" ref={ref => this.createUserModal = ref} >
@@ -288,6 +298,6 @@ class App extends React.Component{
       </div>
     )
   }
-}
+} 
 
 ReactDom.render(<App/>, document.getElementById('app'))
