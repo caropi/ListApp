@@ -207,8 +207,8 @@ class App extends React.Component{
                 }
               })()
             }
-            <i className="fas fa-stopwatch" onClick={this.showTimer}></i>
             <i className="fas fa-info-circle" onClick={this.showSkincareInfo}></i> 
+            <i className="fas fa-stopwatch" onClick={this.showTimer}></i>
           </nav>
         </header>
         <div className="overlay" ref={ref => this.overlay = ref} ></div>
